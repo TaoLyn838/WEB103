@@ -30,20 +30,11 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-\*\*Note: please be sure to
 
-Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+https://github.com/user-attachments/assets/dd9e58c7-6dc7-4d1b-b8c3-ec49a85d02bb
 
-<!-- Replace this with whatever GIF tool you used! -->
 
-GIF created with ... Add GIF tool here
-
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
 
 ## Notes
 
