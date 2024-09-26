@@ -30,11 +30,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-
-
 https://github.com/user-attachments/assets/dd9e58c7-6dc7-4d1b-b8c3-ec49a85d02bb
-
-
 
 ## Notes
 
@@ -42,7 +38,7 @@ Describe any challenges encountered while building the app or any additional con
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2024] [Chengtao Lin]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
