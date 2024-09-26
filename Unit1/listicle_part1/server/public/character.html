@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Character info</title>
+    <script defer src="/scripts/header.js"></script>
+    <script defer src="/scripts/card.js"></script>
+    <style>
+      .hero-bg {
+        background-image: url('https://your-cdn.com/path/to/background-image.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-r from-blue-950 to-indigo-950">
+    <header></header>
+    <main id="character-content" class="container mx-auto p-4">
+      <div class="flex flex-wrap lg:flex-nowrap justify-center items-center">
+        <div class="w-full lg:w-1/2 p-4">
+          <img
+            id="image"
+            src=""
+            alt="Character Image"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full lg:w-1/2 p-4 bg-slate-200 rounded-lg shadow-lg">
+          <h2 id="name" class="text-3xl font-bold text-gray-800 mb-3"></h2>
+          <p id="quality" class="text-sm text-gray-500 mb-1"></p>
+          <p id="element" class="text-sm text-gray-500 mb-1"></p>
+          <p id="dob" class="text-sm text-gray-500 mb-1"></p>
+          <p id="region" class="text-sm text-gray-500 mb-1"></p>
+          <p id="weapon" class="text-sm text-gray-500 mb-1"></p>
+          <h3 id="detail" class="text-gray-600 text-base"></h3>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
