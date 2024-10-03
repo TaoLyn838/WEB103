@@ -1,0 +1,16 @@
+{
+  "name": "listicle_part1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "author": "Chengtao Lin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7"
+  }
+}
