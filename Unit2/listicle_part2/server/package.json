@@ -5,11 +5,13 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "bun run reset && nodemon --require dotenv/config server.js",
+    "reset": "cd config && node --require dotenv/config reset.js"
   },
   "author": "Chengtao Lin",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "nodemon": "^3.1.7"
   }
