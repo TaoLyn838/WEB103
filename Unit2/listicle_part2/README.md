@@ -1,4 +1,4 @@
-# WEB103 Project 1 - _Listicle Part 2_
+# WEB103 Project 2 - _Listicle Part 2_
 
 Submitted by: **Chengtao Lin**
 
@@ -28,6 +28,10 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
+
+
+https://github.com/user-attachments/assets/d1a954f0-f236-4b98-9d74-27491af2fd2b
+
 
 ## Notes
 
