@@ -25,9 +25,17 @@ The following **optional** features are implemented:
 - [ ] An additional page shows all possible `Events` that the user can sort and filter by `Location`
 - [ ] `Events` display a countdown showing the time remaining before that event and appears with different formatting when the event has passed
 
+The following **additional** features are implemented:
+
+- [x] An additional page shows all possible `Events` 
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
+
+
+https://github.com/user-attachments/assets/b0975fbf-260f-49c2-b113-e70abb18a8e5
+
 
 ## Notes
 
