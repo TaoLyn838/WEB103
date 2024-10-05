@@ -1,0 +1,27 @@
+/* App.css or EventGallery.css */
+.event-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Optional: space between grid items */
+  padding: 20px;
+}
+
+.event-gallery .event {
+  background-color: #f9f9f9; /* Optional: customize background */
+  border: 1px solid #ccc; /* Optional: customize border */
+  padding: 15px; /* Optional: customize padding */
+  border-radius: 8px; /* Optional: rounded corners */
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .event-gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .event-gallery {
+    grid-template-columns: 1fr; /* 1 column on mobile screens */
+  }
+}
