@@ -5,6 +5,8 @@ import Gifts from './pages/Gifts.jsx'
 import GiftDetails from './pages/GiftDetails.jsx'
 import PageNotFound from './pages/PageNotFound.jsx'
 import { Link } from 'react-router-dom'
+import CreateGift from './pages/CreateGift.jsx'
+import EditGift from './pages/EditGift.jsx'
 
 const App = () => {
   const [gifts, setGifts] = useState([])
@@ -39,6 +41,14 @@ const App = () => {
       path: '/*',
       element: <PageNotFound />,
     },
+    {
+      path: '/new',
+      element: <CreateGift />,
+    },
+    {
+      path: '/edit/:id',
+      element: <EditGift />,
+    },
   ])
 
   return (
@@ -52,6 +62,9 @@ const App = () => {
           <div className="header-right">
             <Link to="/">
               <button className="homeBtn">Home</button>
+            </Link>
+            <Link to="/new">
+              <button className="addBtn">Add Gift</button>
             </Link>
           </div>
         </div>
