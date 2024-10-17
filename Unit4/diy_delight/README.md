@@ -32,6 +32,8 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
+https://github.com/user-attachments/assets/c820bece-78d9-4d16-9314-c11eaa6a989a
+
 ## Notes
 
 Phew, full-stack programming!
