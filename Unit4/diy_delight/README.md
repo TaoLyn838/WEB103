@@ -32,7 +32,9 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-https://github.com/user-attachments/assets/c820bece-78d9-4d16-9314-c11eaa6a989a
+
+https://github.com/user-attachments/assets/943b3e50-799f-4848-96ed-1e82febbf86b
+
 
 ## Notes
 
