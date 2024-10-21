@@ -26,7 +26,6 @@ const ViewCars = () => {
 
   return (
     <div className="view-cars-container">
-      <h2 className="view-cars-title">Custom Cars</h2>
       {loading ? (
         <div className="loading-container">
           <span aria-busy="true" className="loading">
