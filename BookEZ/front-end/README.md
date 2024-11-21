@@ -1,6 +1,6 @@
 # BookEZ Project
 
-This repository contains the frontend code for the BookEZ project, a collaborative effort by a team dedicated to creating a seamless book management experience.
+This repository contains the frontend code for the BookEZ project, a collaborative effort by a team committed to creating a seamless salon booking management experience. The code in this repository represents the frontend component of our project. Initially developed on Vercel, it was moved to our own hosting due to changes in the platform's pricing for organizations.
 
 ## Team Members
 
