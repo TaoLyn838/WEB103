@@ -2,10 +2,6 @@
 
 This repository contains the frontend code for the BookEZ project, a collaborative effort by a team dedicated to creating a seamless book management experience.
 
-## Overview
-
-The BookEZ project aims to simplify book management tasks, providing a user-friendly interface for both casual readers and librarians. The code in this repository represents the frontend part of our project, initially developed on Vercel but moved to our own hosting due to the platform's pricing changes for organizations.
-
 ## Team Members
 
 - **Parth Kansara** - [GitHub](https://github.com/parthskansara)
