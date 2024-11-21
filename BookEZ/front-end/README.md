@@ -1,4 +1,4 @@
-# BookEZ Project
+# [BookEZ](https://bookez.vercel.app/)
 
 This repository contains the frontend code for the BookEZ project, a collaborative effort by a team committed to creating a seamless salon booking management experience. The code in this repository represents the frontend component of our project. Initially developed on Vercel, it was moved to our own hosting due to changes in the platform's pricing for organizations.
 
