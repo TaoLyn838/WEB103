@@ -1,5 +1,5 @@
 import express from 'express'
-import GiftsController from '../controllers/gifts.js'
+import GiftsController from '../controllers/giftsMongodb.js'
 
 const router = express.Router()
 
@@ -9,5 +9,4 @@ router.post('/', GiftsController.createGift)
 router.delete('/:id', GiftsController.deleteGift)
 router.patch('/:id', GiftsController.updateGift)
 
-// Export the router
 export default router

@@ -1,13 +1,14 @@
-import express from 'express'
 import path from 'path'
-import giftsRouter from './routes/gifts.js'
-import './config/dotenv.js'
+import express from 'express'
 import cors from 'cors'
+import './config/dotenv.js'
+import { connectToDatabase } from './config/database.js'
+import giftsRouter from './routes/gifts.js'
 
 const app = express()
-// add the cors middleware.
-app.use(cors())
+const PORT = process.env.PORT || 3001
 
+app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
@@ -17,10 +18,28 @@ app.get('/', (req, res) => {
       '<h1 style="text-align: center; margin-top: 50px;">UnEarthed API</h1>'
     )
 })
-app.use('/gifts', giftsRouter)
+;(async () => {
+  try {
+    await connectToDatabase()
+    console.log('MongoDB connection initialized.')
 
-// Start the server
-const PORT = process.env.PORT || 3001
-app.listen(PORT, () => {
-  console.log(`🚀 Server listening on http://localhost:${PORT}`)
-})
+    // Routes
+    app.use('/gifts', giftsRouter)
+
+    // Start the server
+    app.listen(PORT, () => {
+      console.log(`🚀 Server listening on http://localhost:${PORT}`)
+    })
+  } catch (error) {
+    console.error('Failed to connect to MongoDB:', error.message)
+    process.exit(1)
+  }
+})()
+
+// Code for pg db
+// app.use('/gifts', giftsRouter)
+
+// // Start the server
+// app.listen(PORT, () => {
+//   console.log(`🚀 Server listening on http://localhost:${PORT}`)
+// })

@@ -1,7 +1,9 @@
 import { pool } from './database.js'
+import { getDatabase, connectToDatabase } from './database.js'
 import './dotenv.js'
 import giftData from '../data/gifts.js'
 
+////////////////////////////// PostgreSQL //////////////////////////////////////
 const createTableQuery = `
     DROP TABLE IF EXISTS gifts;
 
@@ -53,6 +55,30 @@ const seedGiftsTable = async () => {
     })
   })
 }
+////////////////////////////// PostgreSQL //////////////////////////////////////
+
+////////////////////////////// MongoDB /////////////////////////////////////////
+const resetGiftConnection = async () => {
+  try {
+    await connectToDatabase()
+    const db = getDatabase()
+
+    const collections = await db.listCollections({ name: 'gifts' }).toArray()
+    if (collections.length > 0) {
+      await db.collection('gifts').drop()
+      console.log('🗑️ Dropped existing `gifts` collection')
+    }
+    const result = await db.collection('gifts').insertMany(giftData)
+  } catch (error) {
+    console.log(
+      `🌱 Seeded ${result.insertedCount} gifts into the \`gifts\` collection`
+    )
+  } finally {
+    process.exit(0)
+  }
+}
+////////////////////////////// MongoDB /////////////////////////////////////////
 
 console.log('🌱 seeding gifts table...')
-seedGiftsTable()
+// seedGiftsTable() // reset function for PostgreSQL
+resetGiftConnection()
