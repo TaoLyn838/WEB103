@@ -2,7 +2,6 @@ import express from 'express'
 import path from 'path'
 import favicon from 'serve-favicon'
 import './config/dotenv.js'
-import './config/reset.js'
 import cors from 'cors'
 
 // import the router from your routes file

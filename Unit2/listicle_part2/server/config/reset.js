@@ -1,7 +1,9 @@
 import { pool } from './database.js'
 import './dotenv.js'
 import genshinData from '../data/genshin.js'
+import { getDatabase, connectToDatabase } from './database.js'
 
+////////////////////////////// PostgreSQL //////////////////////////////////////
 const createTableQuery = `
     DROP TABLE IF EXISTS genshin_characters;
 
@@ -60,15 +62,34 @@ const seedGenshinTable = async () => {
   })
 }
 
-seedGenshinTable()
-console.log('🌱 seeding Genshin characters table...')
+////////////////////////////// PostgreSQL //////////////////////////////////////
 
-// seedGenshinTable()
-//   .then(() => {
-//     console.log('✅ Genshin data successfully seeded')
-//     process.exit(0) // Exit the script after data is seeded
-//   })
-//   .catch((err) => {
-//     console.error('❌ Error seeding data', err)
-//     process.exit(1)
-//   })
+////////////////////////////// MongoDB /////////////////////////////////////////
+const resetGenshinConnection = async () => {
+  try {
+    await connectToDatabase()
+    const db = getDatabase()
+    const collection = await db
+      .listCollections({ name: 'genshin_characters' })
+      .toArray()
+
+    if (collection.length > 0) {
+      await collection.drop()
+      console.log('🗑️ Genshin characters collection dropped')
+    }
+
+    await db.collection('genshin_characters').insertMany(genshinData)
+    console.log('🌱 Genshin characters collection seeded')
+  } catch (err) {
+    console.error('❌ error resetting Genshin characters collection', err)
+  } finally {
+    process.exit(0) // exit the process after seeding
+  }
+}
+////////////////////////////// MongoDB /////////////////////////////////////////
+
+// Call the appropriate function to reset the database
+
+console.log('🌱 seeding Genshin characters table...')
+// seedGenshinTable() // reset function for PostgreSQL
+resetGenshinConnection() // reset function for MongoDB

@@ -1,6 +1,7 @@
 import { pool } from './database.js'
 import './dotenv.js'
 import eventsData from '../data/events.js'
+import { getDatabase, connectToDatabase } from './database.js'
 
 const createTableQuery = `
     DROP TABLE IF EXISTS events;
@@ -50,6 +51,29 @@ const seedEventsTable = async () => {
   })
 }
 
+// MongoDB version
+const resetEventsTable = async () => {
+  try {
+    await connectToDatabase()
+    const db = getDatabase()
+
+    const eventsCollection = await db
+      .listCollections({ name: 'events' })
+      .toArray()
+
+    if (eventsCollection.length) {
+      await db.collection('events').drop()
+      console.log('🗑️ \u00A0Events collection dropped')
+    }
+
+    await db.collection('events').insertMany(eventsData)
+    console.log('🌱 \u00A0Events collection seeded')
+  } catch (err) {
+    console.error('⚠️ error resetting events collection', err)
+  }
+}
+
 export default {
-  seedEventsTable,
+  // seedEventsTable, // PostgreSQL version
+  resetEventsTable, // MongoDB version
 }

@@ -1,4 +1,4 @@
-import { pool } from './database.js'
+import { connectToDatabase, getDatabase, pool } from './database.js'
 import './dotenv.js'
 import userCars from '../data/userCarsData.js'
 
@@ -44,6 +44,28 @@ const seedUserCarsTable = async () => {
   }
 }
 
+// MongoDB Connection
+const seedUserCarsTableMongo = async () => {
+  try {
+    await connectToDatabase()
+    const db = getDatabase()
+    const userCarsCollection = await db
+      .listCollections({ name: 'user_cars' })
+      .toArray()
+
+    if (userCarsCollection) {
+      await db.collection('user_cars').drop()
+      console.log('🗑️ Dropped user_cars collection')
+    }
+
+    await db.collection('user_cars').insertMany(userCars)
+    console.log('🍻 User cars inserted successfully')
+  } catch (error) {
+    console.error('⚠️ Error seeding user cars collection', error)
+  }
+}
+
 export default {
   seedUserCarsTable,
+  seedUserCarsTableMongo,
 }

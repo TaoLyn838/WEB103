@@ -1,7 +1,22 @@
-import { pool } from './database.js'
+import { pool, getDatabase, connectToDatabase } from './database.js'
 import './dotenv.js'
 
-const categories = ['exterior', 'wheels', 'interior']
+// const categories = ['exterior', 'wheels', 'interior'] // PostgreSQL
+// MongoDB categories
+const categories = [
+  {
+    id: 1,
+    name: 'exterior',
+  },
+  {
+    id: 2,
+    name: 'wheels',
+  },
+  {
+    id: 3,
+    name: 'interior',
+  },
+]
 
 const createCategoriesTableQuery = `
     DROP TABLE IF EXISTS categories CASCADE;
@@ -34,6 +49,29 @@ const seedCategoriesTable = async () => {
   }
 }
 
+// MongoDB Connection
+const seedCategoriesTableMongo = async () => {
+  try {
+    await connectToDatabase()
+    const db = getDatabase()
+    const categoriesCollection = await db
+      .listCollections({ name: 'categories' })
+      .toArray()
+
+    if (categoriesCollection) {
+      await db.collection('categories').drop()
+      console.log('🗑️ Dropped categories collection')
+    }
+
+    // insert categories into the categories collection
+    await db.collection('categories').insertMany(categories)
+    console.log('🍻 Categories inserted successfully')
+  } catch (error) {
+    console.error('⚠️ Error seeding categories collection', error)
+  }
+}
+
 export default {
   seedCategoriesTable,
+  seedCategoriesTableMongo,
 }

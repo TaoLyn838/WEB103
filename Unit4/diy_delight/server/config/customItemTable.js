@@ -1,5 +1,5 @@
 import customItemData from '../data/customItemData.js'
-import { pool } from './database.js'
+import { connectToDatabase, getDatabase, pool } from './database.js'
 import './dotenv.js'
 
 const createTableQuery = `
@@ -44,6 +44,28 @@ const seedCustomItemTable = async () => {
   }
 }
 
+// MongoDB Connection
+const seedCustomItemTableMongo = async () => {
+  try {
+    await connectToDatabase()
+    const db = getDatabase()
+    const customItemsCollection = await db
+      .listCollections({ name: 'custom_items' })
+      .toArray()
+
+    if (customItemsCollection) {
+      await db.collection('custom_items').drop()
+      console.log('🗑️ Dropped custom_items collection')
+    }
+
+    await db.collection('custom_items').insertMany(customItemData)
+    console.log('🍻 Custom items inserted successfully')
+  } catch (error) {
+    console.error('⚠️ Error seeding custom items collection', error)
+  }
+}
+
 export default {
   seedCustomItemTable,
+  seedCustomItemTableMongo,
 }

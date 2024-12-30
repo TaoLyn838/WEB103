@@ -1,6 +1,7 @@
 import { pool } from './database.js'
 import './dotenv.js'
 import locationsData from '../data/locations.js'
+import { getDatabase, connectToDatabase } from './database.js'
 
 const createTableQuery = `
     DROP TABLE IF EXISTS locations CASCADE;
@@ -52,6 +53,27 @@ const seedLocalLocationsTable = async () => {
   })
 }
 
+const resetLocationsTable = async () => {
+  try {
+    await connectToDatabase()
+    const db = getDatabase()
+    const locationsCollection = await db
+      .listCollections({ name: 'locations' })
+      .toArray()
+
+    if (locationsCollection.length) {
+      await db.collection('locations').drop()
+      console.log('🗑️ Locations collection dropped')
+    }
+
+    await db.collection('locations').insertMany(locationsData)
+    console.log('🌱 Locations collection seeded')
+  } catch (err) {
+    console.error('⚠️ error resetting locations table', err)
+  }
+}
+
 export default {
-  seedLocalLocationsTable,
+  // seedLocalLocationsTable, // PostgreSQL version
+  resetLocationsTable, // MongoDB version
 }
